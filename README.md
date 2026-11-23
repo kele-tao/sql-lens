@@ -1,5 +1,7 @@
 # sql-lens
 
+**English** | [简体中文](README.zh-CN.md)
+
 Static analysis for SQL that finds the slow, unsafe and unmaintainable query **before** it reaches production - and never needs a database connection.
 
 ![ci](https://github.com/kele-tao/sql-lens/actions/workflows/ci.yml/badge.svg)
