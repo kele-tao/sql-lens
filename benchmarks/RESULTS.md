@@ -5,8 +5,8 @@ Each measurement is the best of two wall-clock runs; the workload is generated d
 
 | input | statements | findings | lint | lint MB/s | format | format MB/s | complexity | idempotent |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 100 KB | 523 | 1439 | 0.134 s | 0.7 | 0.277 s | 0.4 | 0.114 s | yes |
-| 500 KB | 2615 | 7192 | 0.736 s | 0.7 | 2.566 s | 0.2 | 0.965 s | yes |
-| 1 MB | 5354 | 14725 | 2.544 s | 0.4 | 5.510 s | 0.2 | 2.117 s | yes |
+| 100 KB | 523 | 1439 | 0.130 s | 0.8 | 0.281 s | 0.3 | 0.111 s | yes |
+| 500 KB | 2615 | 7192 | 0.669 s | 0.7 | 1.624 s | 0.3 | 0.697 s | yes |
+| 1 MB | 5354 | 14725 | 2.845 s | 0.4 | 6.520 s | 0.1 | 2.596 s | yes |
 
 Input sizes are UTF-8 bytes of the generated SQL workload.

@@ -9,7 +9,7 @@ the strongest contributions are narrow and testable.
 git clone https://github.com/kele-tao/sql-lens
 cd sql-lens
 python -m pip install -e ".[dev]"
-python -m pytest -q        # 195 tests, offline, about one second
+python -m pytest -q        # 198 tests, offline, about one second
 python -m ruff check .     # must be clean
 ```
 
