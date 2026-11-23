@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sql-lens"
+version = "1.0.0"
+description = "Static analysis for SQL: lint rules, EXPLAIN-plan diagnosis, a deterministic formatter and complexity scoring. No database needed."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "kele" }]
+keywords = ["sql", "linter", "static-analysis", "explain", "formatter", "database"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Database",
+  "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "ruff>=0.6"]
+
+[project.scripts]
+sql-lens = "sql_lens.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/kele-tao/sql-lens"
+Changelog = "https://github.com/kele-tao/sql-lens/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "C4", "RET", "RUF"]
+ignore = [
+  "E501",   # line length is enforced by ruff format-style review, not argparse text
+  "SIM905", # triple-quoted word lists are far more readable than 70-item list literals
+  "B905",   # zip(strict=) is Python 3.10+ only
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]

@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest a rule, a dialect, or an output format
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        sql-lens stays small on purpose. The strongest requests are a rule that
+        catches a bug you actually shipped, or a dialect construct the parser
+        rejects.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the query and the mistake it hid.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behaviour
+      description: What should sql-lens report, and with which severity?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false

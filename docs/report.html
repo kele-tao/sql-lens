@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>sql-lens report</title><style>
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 32px; background: #0b0f17; color: #d7dee9;
+       font: 15px/1.6 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.01em; }
+h1 span { color: #22d3ee; }
+.meta { color: #7d8b9f; font-size: 13px; margin-bottom: 26px; }
+table { border-collapse: collapse; width: 100%; margin: 0 0 26px; font-size: 14px; }
+th { text-align: left; color: #8b9bb4; font-weight: 600; padding: 8px 10px;
+     border-bottom: 1px solid #263042; }
+td { padding: 8px 10px; border-bottom: 1px solid #17202d; vertical-align: top; }
+tr:hover td { background: #111826; }
+code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 13px; }
+.sev { display: inline-block; min-width: 58px; text-align: center; padding: 1px 8px;
+       border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .04em; }
+.error { background: #3b1417; color: #ff8787; }
+.warn  { background: #3a2c0b; color: #fbbf24; }
+.info  { background: #10243a; color: #93c5fd; }
+.code  { color: #c084fc; font-weight: 700; }
+.snip  { color: #7d8b9f; font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+.hint  { color: #67e8f9; font-size: 12px; }
+.summary { display: flex; gap: 18px; margin: 0 0 26px; }
+.card { background: #111826; border: 1px solid #1f2937; border-radius: 12px; padding: 14px 20px; }
+.card b { display: block; font-size: 24px; }
+.card span { color: #8b9bb4; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+.pass { color: #4ade80; } .fail { color: #ff8787; }
+</style></head>
+<body>
+<h1><span>sql-lens</span> lint report</h1>
+<div class="meta">examples\sales_report.sql &middot; 9 lines scanned &middot;
+20 rules enabled &middot; fail-on error</div>
+<div class="summary">
+  <div class="card"><b class="pass">PASS</b><span>result</span></div>
+  <div class="card"><b class="fail">0</b><span>errors</span></div>
+  <div class="card"><b class="warn">4</b><span>warnings</span></div>
+  <div class="card"><b class="info">2</b><span>info</span></div>
+</div>
+<table>
+<thead><tr><th>rule</th><th>severity</th><th>location</th><th>finding</th></tr></thead>
+<tbody>
+<tr><td class="code">SL017</td><td><span class="sev info">INFO</span></td><td>examples\sales_report.sql:5:6</td><td>table orders is not schema-qualified; resolution depends on search_path<div class="snip">from orders o, customers c</div><div class="hint">hint: Qualify tables as schema.table so the query means one thing.</div></td></tr>
+<tr><td class="code">SL017</td><td><span class="sev info">INFO</span></td><td>examples\sales_report.sql:5:16</td><td>table customers is not schema-qualified; resolution depends on search_path<div class="snip">from orders o, customers c</div><div class="hint">hint: Qualify tables as schema.table so the query means one thing.</div></td></tr>
+<tr><td class="code">SL005</td><td><span class="sev warning">WARNING</span></td><td>examples\sales_report.sql:7:22</td><td>lower() wraps column c.email in a LIKE predicate; an index on the column cannot be used<div class="snip">and lower(c.email) like &#x27;%@example.com&#x27;</div><div class="hint">hint: Rewrite as a range predicate or index the expression.</div></td></tr>
+<tr><td class="code">SL006</td><td><span class="sev warning">WARNING</span></td><td>examples\sales_report.sql:7:22</td><td>LIKE &#x27;%@example.com&#x27; on lower(...) starts with a wildcard, so the index cannot be used<div class="snip">and lower(c.email) like &#x27;%@example.com&#x27;</div><div class="hint">hint: Prefer prefix search, a trigram index, or a full-text index.</div></td></tr>
+<tr><td class="code">SL007</td><td><span class="sev warning">WARNING</span></td><td>examples\sales_report.sql:8:16</td><td>NOT IN over (subquery) on o.status returns zero rows if any value is NULL<div class="snip">and o.status not in (select status from orders where status = &#x27;cancelled&#x27;)</div><div class="hint">hint: Use NOT EXISTS, which is NULL-safe and usually faster.</div></td></tr>
+<tr><td class="code">SL009</td><td><span class="sev warning">WARNING</span></td><td>examples\sales_report.sql:9:10</td><td>ORDER BY without LIMIT sorts every matching row; add LIMIT/OFFSET or a supporting index<div class="snip">order by revenue desc;</div><div class="hint">hint: Add LIMIT/OFFSET, or accept the sort explicitly with a comment.</div></td></tr>
+</tbody>
+</table>
+</body></html>

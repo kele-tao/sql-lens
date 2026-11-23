@@ -1,0 +1,49 @@
+{
+  "tool": "sql-lens",
+  "python": "3.12.10",
+  "platform": "Windows 11",
+  "seed": 20261123,
+  "repeat": 2,
+  "taken": "best of 2 wall-clock runs",
+  "rows": [
+    {
+      "input": "100 KB",
+      "bytes": 103543,
+      "statements": 523,
+      "lint_seconds": 0.134,
+      "lint_mb_per_s": 0.74,
+      "findings": 1439,
+      "format_seconds": 0.277,
+      "format_mb_per_s": 0.36,
+      "complexity_seconds": 0.114,
+      "queries_scored": 523,
+      "format_idempotent": true
+    },
+    {
+      "input": "500 KB",
+      "bytes": 517427,
+      "statements": 2615,
+      "lint_seconds": 0.736,
+      "lint_mb_per_s": 0.67,
+      "findings": 7192,
+      "format_seconds": 2.566,
+      "format_mb_per_s": 0.19,
+      "complexity_seconds": 0.965,
+      "queries_scored": 2615,
+      "format_idempotent": true
+    },
+    {
+      "input": "1 MB",
+      "bytes": 1059394,
+      "statements": 5354,
+      "lint_seconds": 2.544,
+      "lint_mb_per_s": 0.4,
+      "findings": 14725,
+      "format_seconds": 5.51,
+      "format_mb_per_s": 0.18,
+      "complexity_seconds": 2.117,
+      "queries_scored": 5354,
+      "format_idempotent": true
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+name: Bug report
+description: Something is wrong with sql-lens
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. A failing SQL snippet and the exact command is
+        usually enough to reproduce the problem.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Include the command you ran and the output you got.
+      placeholder: |
+        $ sql-lens lint query.sql
+        ...
+    validations:
+      required: true
+  - type: textarea
+    id: sql
+    attributes:
+      label: The SQL that triggers it
+      description: A minimal snippet. Remove anything confidential.
+      render: sql
+    validations:
+      required: false
+  - type: input
+    id: version
+    attributes:
+      label: sql-lens version
+      description: Output of `sql-lens --version`
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "3.12.2"
+    validations:
+      required: true
